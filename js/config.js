@@ -16,12 +16,12 @@ var sites = [
     ]}
 ];
 var configs = [];
-
+var nbs_entries = 40;
 // Enable Debug at certain location
-var debug = 1;
+var debug = true;
 
 // Enable JSON piping to work around Access-Control-Allow-Origin
 // You need to be able run run PHP on your test server
-var pipe_json = 1;
+var pipe_json = true;
 var pipe_url = "./json_pipe.php?url=";
 
