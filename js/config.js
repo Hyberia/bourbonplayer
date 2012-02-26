@@ -4,7 +4,7 @@
 var sites = [
 	{ name: "Giant Bomb", configs: [
 		"http://api.giantbomb.com",
-		"fbf5f21d4d477e2da35a1eb5391340e197ed5d68"
+		"fbf5f21d4d477e2da35a1eb5391340e197ed5d68-"
 	]},
 	{ name: "Tested", configs: [
 		"http://api.tested.com",
@@ -13,5 +13,6 @@ var sites = [
 ];
 var debug = 1;
 // Work around for the Access-Control-Allow-Origin
-var pipe_json = 0;
+var pipe_json = 1;
 var pipe_url = "./json_pipe.php?url=";
+var configs = [];
