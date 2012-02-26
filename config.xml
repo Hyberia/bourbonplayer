@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<widget xmlns="http://www.w3.org/ns/widgets"
+	xmlns:rim="http://www.blackberry.com/ns/widgets"
+	version="2.0.0.0">
+	
+	<name>Bourdon Player</name>
+	
+	<description>
+		Media player for the family of site at Whiskey Media (Giant Bomb, Tested, Comic Vine, Screened)
+	</description>
+	
+	<author href="http://hyberia.ca/" rim:copyright="Copyright 2012 Hyberia Inc.">Hyberia Inc.</author>
+	
+	<rim:orientation mode="landscape"/>
+	
+	<rim:loadingScreen backgroundImage="loading-bg.jpg" onLocalPageLoad="true" backgroundColor="#333333">
+		<rim:transitionEffect type="zoomIn"/>
+	</rim:loadingScreen>
+	
+	<icon src="icon.png"/>
+	<!--	
+	<rim:category name="games"/>	
+	
+	<rim:permissions>
+	<rim:permit>access_shared</rim:permit>
+	<rim:permit>read_geolocation</rim:permit>
+	<rim:permit>use_camera</rim:permit>  
+	</rim:permissions>
+	
+	<icon src="icons/example.png"/>
+	-->
+	<feature id="blackberry.ui.dialog"/>
+	
+	<content src="index.html"/>
+	
+	<access uri="http://giantbomb.com" subdomains="true" />
+	<access uri="http://hyberia.ca" subdomains="true" />	
+</widget>
