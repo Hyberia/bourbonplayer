@@ -4,7 +4,7 @@ function filterByProperty(arr, prop, value) {
 }
 
 function buildApiUrl (config, path, option) {
-    if (pipe_json) {
+    if (pipe_json && isBlackBerryPlayBook() ) {
         url = config[0] + path + "?api_key=" + config[1] + "&format=json";
         return pipe_url + escape(url);
     }
@@ -16,8 +16,9 @@ function populateSelect(el, items) {
     el.options.length = 0;
     if (items.length > 0)
         el.options[0] = new Option("please select", "");
-    $.each(items, function () {
-        el.options[el.options.length] = new Option(this.name, this.value);
+    $.each(items, function (i) {
+        if (debug) console.log(this);
+        el.options[el.options.length] = new Option(items[i].name, items[i].value);
     });
 }
 
@@ -36,4 +37,12 @@ function apiError (json) {
     else {
         return false;
     }
+}
+
+function isBlackBerryPlayBook()
+{
+    var ua = navigator.userAgent.toLowerCase();     
+    var isWebKit     = (ua.indexOf("webkit") >= 0);
+    var isTablet     = (ua.indexOf("playbook") >= 0);
+    return (isWebKit && isTablet);
 }

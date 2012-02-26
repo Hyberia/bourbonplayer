@@ -6,8 +6,14 @@ $(document).ready(function () {
     
     // Populate video sections
     $("#site").bind("change", function() {
+        if (debug) console.log(this);
         var site = this.value;
-        configs = filterByProperty(sites, 'name', site)[0].configs;
+        //configs = filterByProperty(sites, 'name', site)[0].configs;
+        $.each(sites, function(i) {
+            console.log(sites[0]);
+            if (sites[i].name == site)
+                configs = sites[i].configs
+        });
 
         $.getJSON(buildApiUrl(configs, "/video_types/"), function(json) {
             if (apiError(json)) {
