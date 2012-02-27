@@ -9,6 +9,9 @@ $(document).ready(function () {
         section = this.value
         // Get the number of result
         $.getJSON(apiBuildURI(configs, "/videos/", "video_type=" + section + "&limit=1"), function(json) {
+            if (apiError(json)) {
+                alert("A error occur while loading information from the API.\n\n" + json["error"]);
+            }
             total_results = json["number_of_total_results"];
             offset = (total_results - nbs_entries < 0) ? 0: total_results - nbs_entries;
             
@@ -18,6 +21,9 @@ $(document).ready(function () {
             // Get last _nbs_entries_ entries for that video_type
             opts = "video_type="+section+"&offset="+offset+"&field_list=id,name";
             $.getJSON(apiBuildURI(configs, "/videos/", opts ), function (json) {
+                if (apiError(json)) {
+                    alert("A error occur while loading information from the API.\n\n" + json["error"]);
+                }
                 if (debug) console.log(json);
                 videos = json["results"].reverse();
                 
@@ -27,10 +33,10 @@ $(document).ready(function () {
                     videolist.append(h);
                 }
                 $("li", $("#videolist")).bind("click", function() {
-                    $(this).css({color: "blue"});
-                    alert("Data is " + $(this).attr("data"));
+                    if (debug) console.log("Data is " + $(this).attr("data"));
+                    populateContentPane($(this).attr("data"));
                 });
-                $("li", $("#videolist")).css({"color": "red"});
+                //$("li", $("#videolist")).css({"color": "red"});
             });
         });
     });
